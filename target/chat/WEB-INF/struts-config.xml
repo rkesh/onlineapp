@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+    <!DOCTYPE struts-config PUBLIC
+              "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+              "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <form-beans>      
+        <form-bean name="welcomeActionForm" type="com.cisco.chat.actionform.welcomeActionForm"/>
+        <form-bean name="signupActionForm" type = "com.cisco.chat.actionform.signupActionForm"/>
+         <form-bean name="ajaxActionForm" type = "com.cisco.chat.actionform.AjaxActionForm"/>
+    </form-beans>
+    <action-mappings>
+        <action name="welcomeActionForm" path="/welcome" type="com.cisco.chat.action.welcomeAction" scope="request">
+            <forward name="welcome" path="/welcome.jsp"/>
+            <forward name="signup" path="/signup.jsp"/>
+            <forward name="onlinechat" path="/onlinechat.jsp"/>
+        </action>
+        <action name="signupActionForm" path="/signup" type="com.cisco.chat.action.signupAction" scope="request" >
+        		<forward name="welcome" path="/welcome.jsp" />
+        		<forward name="signup" path="/signup.jsp"/>
+        </action>
+            <action path="/ajaxAction"
+            type="com.cisco.chat.action.AjaxAction"
+            name="ajaxActionForm"
+            scope="request">
+            <forward name="ajaxResponse" path="/ajaxResponse.jsp" />
+        </action>
+    </action-mappings>
+</struts-config>

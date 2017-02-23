@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration debug="true" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="R" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="/chat_War/log/chat.log"/>
+        <param name="MaxFileSize" value="1024KB"/>
+        <param name="MaxBackupIndex" value="25"/>
+        <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p (%F:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- logging category for chat application -->
+    <category name="com.cisco.chat" additivity="false">
+        <priority value="info" />
+        <appender-ref ref="R" />
+	</category>
+
+    <!-- logging category for httpclient -->
+    <category name="org.apache.commons.httpclient" additivity="false">
+        <priority value="error" />
+        <appender-ref ref="R" />
+	</category>
+
+</log4j:configuration>
